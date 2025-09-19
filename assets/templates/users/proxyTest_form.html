@@ -1,0 +1,39 @@
+<!-- {%extends 'users/userbase.html'%}
+{%block contents%}
+
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">FeedBack</h2>
+        <div class="row">
+            <div class="container">
+                <h3>Entre your Message Here :<font style="color:RED">{{msg}}</font></h3>
+
+                <form action="{%url 'mitmfdia_samples'%}" method="post">
+                    {%csrf_token%}
+                    <div class="container">
+
+                        <form>
+                           
+                            </div>
+                            <div class="form-group">
+                                <label for="message"></label>
+                                <textarea class="form-control" id="message" rows="4" name="msg"
+                                          placeholder="Your Message" required></textarea>
+                            </div>
+                            <button class="btn btn-block btn-primary text-white py-2 px-4"
+                                    type="submit">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{%endblock%} -->

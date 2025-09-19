@@ -1,0 +1,6 @@
+1) Open the terminal and naviagte source code location
+2) first run the serve_code.py file and copy the token
+3) now run the intermediate proxy mitmfdai_code.py
+4) run the dajngo server
+
+the token will usefully after usr login and sending a test message to server

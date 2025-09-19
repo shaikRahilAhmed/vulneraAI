@@ -1,0 +1,625 @@
+{%extends 'users/userbase.html'%}
+{%block contents%}
+
+<style>
+    /* Enhanced Form Styles */
+    .cvss-section {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cvss-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0, 102, 204, 0.03) 0%, transparent 70%);
+        animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .section-title {
+        position: relative;
+        z-index: 2;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .subtitle {
+        color: #718096;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+
+    .cvss-form-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 102, 204, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+    }
+
+    .cvss-form-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 80px rgba(0, 102, 204, 0.15);
+    }
+
+    .cvss-score-display {
+        background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 16px;
+        text-align: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cvss-score-display::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    .cvss-score-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(248, 250, 252, 0.5);
+        border-radius: 16px;
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .form-section:hover {
+        border-left-color: var(--primary-color);
+        background: rgba(248, 250, 252, 0.8);
+        transform: translateX(5px);
+    }
+
+    .section-icon {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        color: rgba(0, 102, 204, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .form-section:hover .section-icon {
+        color: var(--primary-color);
+        transform: scale(1.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #4a5568;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .form-label i {
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+    }
+
+    .form-control {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        position: relative;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        background: white;
+        transform: translateY(-2px);
+    }
+
+    .form-control:hover {
+        border-color: #cbd5e0;
+        background: white;
+    }
+
+    .select-wrapper {
+        position: relative;
+    }
+
+    .select-wrapper::after {
+        content: '\f107';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-color);
+        pointer-events: none;
+        transition: transform 0.3s ease;
+    }
+
+    .form-control:focus + .select-wrapper::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .submit-btn {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 102, 204, 0.4);
+    }
+
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+
+    .submit-btn:active {
+        transform: translateY(-1px);
+    }
+
+    .tooltip-info {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        color: #a0aec0;
+        cursor: help;
+        transition: color 0.3s ease;
+    }
+
+    .tooltip-info:hover {
+        color: var(--primary-color);
+    }
+
+    .progress-indicator {
+        height: 4px;
+        background: #e2e8f0;
+        border-radius: 2px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 2px;
+        transition: width 0.3s ease;
+        width: 0%;
+    }
+
+    .field-status {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .field-status.valid {
+        opacity: 1;
+        color: #48bb78;
+    }
+
+    .field-status.invalid {
+        opacity: 1;
+        color: #f56565;
+    }
+
+    /* Animation for form appearance */
+    .form-section {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideInUp 0.6s ease forwards;
+    }
+
+    .form-section:nth-child(1) { animation-delay: 0.1s; }
+    .form-section:nth-child(2) { animation-delay: 0.2s; }
+    .form-section:nth-child(3) { animation-delay: 0.3s; }
+    .form-section:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes slideInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .cvss-form-container {
+            padding: 2rem 1.5rem;
+            margin: 1rem;
+        }
+
+        .cvss-score-value {
+            font-size: 2rem;
+        }
+
+        .form-section {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<section id="services" class="cvss-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">National Institute of Standards and Technology</h2>
+            <p class="subtitle">Advanced CVSS Calculator for Vulnerability Assessment</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12">
+                <div class="cvss-form-container">
+                    <div class="text-center mb-4">
+                        <h2 class="mb-3">
+                            <i class="fas fa-calculator me-2" style="color: var(--primary-color);"></i>
+                            Calculate CVSS Score
+                        </h2>
+                        
+                        {% if cvss %}
+                        <div class="cvss-score-display">
+                            <div class="cvss-score-label">CVSS Score</div>
+                            <div class="cvss-score-value">{{ cvss }}</div>
+                            <small class="opacity-75">Common Vulnerability Scoring System</small>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div class="progress-indicator">
+                        <div class="progress-bar" id="formProgress"></div>
+                    </div>
+
+                    <form action="{% url 'CalculateCVSSScore' %}" method="post" id="cvssForm">
+                        {% csrf_token %}
+                        
+                        <!-- Base Metrics Section -->
+                        <div class="form-section">
+                            <i class="section-icon fas fa-network-wired"></i>
+                            <h4 class="mb-3 text-primary">
+                                <i class="fas fa-shield-alt me-2"></i>Base Metrics
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-wifi"></i>Attack Vector
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="attackVector" required>
+                                                <option value="">Choose Attack Vector</option>
+                                                <option value="N" data-tooltip="Remotely exploitable">🌐 Network</option>
+                                                <option value="A" data-tooltip="Adjacent network access">📡 Adjacent</option>
+                                                <option value="L" data-tooltip="Local access required">💻 Local</option>
+                                                <option value="P" data-tooltip="Physical access required">🔐 Physical</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-puzzle-piece"></i>Attack Complexity
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="attackComplexity" required>
+                                                <option value="">Choose Attack Complexity</option>
+                                                <option value="L" data-tooltip="Easily reproducible">⚡ Low</option>
+                                                <option value="H" data-tooltip="Requires specialized conditions">🎯 High</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Access Requirements Section -->
+                        <div class="form-section">
+                            <i class="section-icon fas fa-user-shield"></i>
+                            <h4 class="mb-3 text-primary">
+                                <i class="fas fa-key me-2"></i>Access Requirements
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-user-lock"></i>Privileges Required
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="privilegesRequire" required>
+                                                <option value="">Choose Privileges Required</option>
+                                                <option value="N" data-tooltip="No privileges needed">🚫 None</option>
+                                                <option value="L" data-tooltip="Basic user privileges">👤 Low</option>
+                                                <option value="H" data-tooltip="Admin privileges required">👑 High</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-mouse-pointer"></i>User Interaction
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="userInteraction" required>
+                                                <option value="">Choose User Interaction</option>
+                                                <option value="N" data-tooltip="No user interaction needed">🤖 None</option>
+                                                <option value="R" data-tooltip="User must take action">👆 Required</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Impact Metrics Section -->
+                        <div class="form-section">
+                            <i class="section-icon fas fa-exclamation-triangle"></i>
+                            <h4 class="mb-3 text-primary">
+                                <i class="fas fa-impact me-2"></i>Impact Metrics
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-expand-arrows-alt"></i>Scope
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="scope" required>
+                                                <option value="">Choose Scope</option>
+                                                <option value="U" data-tooltip="Impact limited to vulnerable component">📦 Unchanged</option>
+                                                <option value="C" data-tooltip="Impact beyond vulnerable component">🌍 Changed</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-eye-slash"></i>Confidentiality Impact
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="confidentialityImpact" required>
+                                                <option value="">Choose Confidentiality Impact</option>
+                                                <option value="N" data-tooltip="No information disclosed">✅ None</option>
+                                                <option value="L" data-tooltip="Some information disclosed">⚠️ Low</option>
+                                                <option value="H" data-tooltip="Total information disclosure">🚨 High</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Impact Section -->
+                        <div class="form-section">
+                            <i class="section-icon fas fa-server"></i>
+                            <h4 class="mb-3 text-primary">
+                                <i class="fas fa-database me-2"></i>System Impact
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-shield-virus"></i>Integrity Impact
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="integrityImpact" required>
+                                                <option value="">Choose Integrity Impact</option>
+                                                <option value="N" data-tooltip="No data modification">✅ None</option>
+                                                <option value="L" data-tooltip="Some data modification">⚠️ Low</option>
+                                                <option value="H" data-tooltip="Complete data compromise">🚨 High</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-plug"></i>Availability Impact
+                                        </label>
+                                        <div class="select-wrapper">
+                                            <select class="form-control" name="availabilityImpact" required>
+                                                <option value="">Choose Availability Impact</option>
+                                                <option value="N" data-tooltip="No availability impact">✅ None</option>
+                                                <option value="L" data-tooltip="Reduced performance">⚠️ Low</option>
+                                                <option value="H" data-tooltip="Complete system shutdown">🚨 High</option>
+                                            </select>
+                                            <div class="field-status"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-calculator me-2"></i>
+                            Calculate CVSS Score
+                            <span class="loading-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('cvssForm');
+    const submitBtn = form.querySelector('.submit-btn');
+    const progressBar = document.getElementById('formProgress');
+    const selects = form.querySelectorAll('select');
+
+    // Update progress bar based on form completion
+    function updateProgress() {
+        const totalFields = selects.length;
+        let filledFields = 0;
+
+        selects.forEach(select => {
+            if (select.value) {
+                filledFields++;
+                select.nextElementSibling.classList.remove('invalid');
+                select.nextElementSibling.classList.add('valid');
+                select.nextElementSibling.innerHTML = '<i class="fas fa-check"></i>';
+            } else {
+                select.nextElementSibling.classList.remove('valid', 'invalid');
+                select.nextElementSibling.innerHTML = '';
+            }
+        });
+
+        const progress = (filledFields / totalFields) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Enable/disable submit button based on completion
+        if (progress === 100) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.6';
+        }
+    }
+
+    // Add event listeners to all selects
+    selects.forEach(select => {
+        select.addEventListener('change', updateProgress);
+        
+        // Add focus effects
+        select.addEventListener('focus', function() {
+            this.parentElement.parentElement.style.transform = 'scale(1.02)';
+        });
+        
+        select.addEventListener('blur', function() {
+            this.parentElement.parentElement.style.transform = 'scale(1)';
+        });
+    });
+
+    // Form submission handling
+    form.addEventListener('submit', function(e) {
+        const spinner = submitBtn.querySelector('.loading-spinner');
+        const buttonText = submitBtn.childNodes[2];
+        
+        submitBtn.disabled = true;
+        spinner.style.display = 'inline';
+        buttonText.textContent = ' Calculating...';
+        
+        // Add loading class to button
+        submitBtn.classList.add('loading');
+    });
+
+    // Initialize progress
+    updateProgress();
+
+    // Add hover effects to form sections
+    const formSections = document.querySelectorAll('.form-section');
+    formSections.forEach(section => {
+        section.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(5px)';
+            this.querySelector('.section-icon').style.transform = 'scale(1.1) rotate(10deg)';
+        });
+        
+        section.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+            this.querySelector('.section-icon').style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+
+    // Add tooltip functionality (you can expand this)
+    selects.forEach(select => {
+        select.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const tooltip = selectedOption.getAttribute('data-tooltip');
+            if (tooltip) {
+                // You can add a toast notification here
+                console.log(tooltip);
+            }
+        });
+    });
+});
+</script>
+
+{%endblock%}

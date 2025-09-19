@@ -1,0 +1,880 @@
+{%extends 'users/userbase.html'%}
+{%block contents%}
+
+<section class="user-nist-section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="section-header text-center">
+                    <div class="header-badge">
+                        <i class="fas fa-university me-2"></i>
+                        <span>NIST Framework</span>
+                    </div>
+                    <h2 class="section-title">National Institute of Standards and Technology</h2>
+                    <div class="title-decoration">
+                        <div class="decoration-line"></div>
+                        <div class="decoration-dot"></div>
+                        <div class="decoration-line"></div>
+                    </div>
+                    <p class="section-subtitle">
+                        Learn about cybersecurity best practices and frameworks designed to protect critical infrastructure and enhance your digital security knowledge.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Cards -->
+        <div class="row services-container">
+            <!-- Personnel Training Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-header-icon">
+                        <div class="icon-wrapper training">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="card-number">01</div>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">Reason to Train Personnel</h5>
+                        <p class="card-description">
+                            As the critical infrastructure (CI) sectors continue to embrace developments in information technology (IT), 
+                            susceptibility to cyber assaults has been found to rise. CIs may be made more resistant to cyber assaults 
+                            by employing individuals who are knowledgeable about cyber threats.
+                        </p>
+                        <div class="card-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Enhanced Security Awareness</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Threat Recognition Skills</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Best Practice Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-learn-more" onclick="showDetails('training')">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyber Defense Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-header-icon">
+                        <div class="icon-wrapper defense">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <div class="card-number">02</div>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">Actions of a Defending Organization during a Cyber Attack</h5>
+                        <p class="card-description">
+                            When it comes to protecting their networks, cyber defenders at a company go through a number of stages. 
+                            During the first step, a risk assessment will identify any potential weak spots and vulnerabilities 
+                            in the system architecture.
+                        </p>
+                        <div class="card-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Rapid Incident Response</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Threat Containment</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Recovery Procedures</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-learn-more" onclick="showDetails('defense')">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malware Prevention Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-header-icon">
+                        <div class="icon-wrapper malware">
+                            <i class="fas fa-virus-slash"></i>
+                        </div>
+                        <div class="card-number">03</div>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">IT and OT Procedures to Reduce the Risk of Malware</h5>
+                        <p class="card-description">
+                            The identification and elimination of computer malware are two components of an effective defensive approach. 
+                            Detection may be performed using either a signature-based approach or an anomaly-based approach for 
+                            comprehensive protection.
+                        </p>
+                        <div class="card-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Advanced Detection Methods</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Proactive Prevention</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>System Hardening</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-learn-more" onclick="showDetails('malware')">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Banner -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="info-banner">
+                    <div class="banner-background"></div>
+                    <div class="banner-content">
+                        <div class="banner-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="banner-text">
+                            <h4>Stay Informed About Cybersecurity</h4>
+                            <p>Understanding these NIST framework principles helps you better protect your digital assets and contribute to overall cybersecurity resilience.</p>
+                        </div>
+                        <div class="banner-action">
+                            <button class="btn-banner" onclick="showResourcesModal()">
+                                <i class="fas fa-book me-2"></i>
+                                <span>View Resources</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+</section>
+
+<!-- Details Modal -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Service Details</h3>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Content will be inserted here -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div id="resourcesModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Cybersecurity Resources</h3>
+            <span class="close" onclick="closeResourcesModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="resource-list">
+                <div class="resource-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="resource-info">
+                        <h5>NIST Cybersecurity Framework</h5>
+                        <p>Complete guide to implementing cybersecurity best practices</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-book-open"></i>
+                    <div class="resource-info">
+                        <h5>Security Training Materials</h5>
+                        <p>Educational resources for cybersecurity awareness</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="resource-info">
+                        <h5>Incident Response Playbook</h5>
+                        <p>Step-by-step guide for handling security incidents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeResourcesModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .user-nist-section {
+        background: linear-gradient(135deg, #f8faff 0%, #e8f2ff 100%);
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .section-header {
+        margin-bottom: 4rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    .header-badge {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .section-title {
+        color: #2d3748;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .title-decoration {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .decoration-line {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 1px;
+    }
+
+    .decoration-dot {
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+    }
+
+    .section-subtitle {
+        color: #718096;
+        font-size: 1.2rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .services-container {
+        position: relative;
+        z-index: 10;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 20px;
+        padding: 0;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header-icon {
+        padding: 2rem 2rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .icon-wrapper.training {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .icon-wrapper.defense {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .icon-wrapper.malware {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .service-card:hover .icon-wrapper {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-number {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .card-content {
+        padding: 0 2rem 1.5rem;
+    }
+
+    .card-title {
+        color: #2d3748;
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+
+    .card-description {
+        color: #718096;
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .card-benefits {
+        margin-bottom: 1.5rem;
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .benefit-item i {
+        color: #22c55e;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+
+    .benefit-item span {
+        color: #4b5563;
+        font-weight: 500;
+    }
+
+    .card-footer {
+        padding: 0 2rem 2rem;
+    }
+
+    .btn-learn-more {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-learn-more::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-learn-more:hover::before {
+        left: 100%;
+    }
+
+    .btn-learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .info-banner {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin-top: 3rem;
+    }
+
+    .banner-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    }
+
+    .banner-content {
+        padding: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        flex-shrink: 0;
+    }
+
+    .banner-text {
+        flex: 1;
+    }
+
+    .banner-text h4 {
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+    }
+
+    .banner-text p {
+        color: #718096;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .btn-banner {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 0.9rem 1.8rem;
+        border-radius: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .btn-banner:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(102, 126, 234, 0.03);
+        animation: floatShape 20s ease-in-out infinite;
+    }
+
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+
+    .shape-2 {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 10%;
+        animation-delay: -5s;
+    }
+
+    .shape-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 15%;
+        animation-delay: -10s;
+    }
+
+    .shape-4 {
+        width: 120px;
+        height: 120px;
+        top: 30%;
+        right: 30%;
+        animation-delay: -15s;
+    }
+
+    @keyframes floatShape {
+        0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+        25% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+        50% { transform: translateY(0px) translateX(40px) scale(1); }
+        75% { transform: translateY(30px) translateX(20px) scale(0.9); }
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal.show {
+        display: flex;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 80vh;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-50px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8fafc;
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        color: #1f2937;
+        font-weight: 600;
+    }
+
+    .close {
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #6b7280;
+        background: none;
+        border: none;
+        transition: color 0.3s ease;
+    }
+
+    .close:hover {
+        color: #374151;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+        overflow-y: auto;
+    }
+
+    .modal-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #e5e7eb;
+        text-align: right;
+    }
+
+    .btn-secondary {
+        background: #6b7280;
+        color: white;
+        border: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background: #4b5563;
+        transform: translateY(-2px);
+    }
+
+    .resource-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .resource-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: #f8fafc;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .resource-item i {
+        color: #667eea;
+        font-size: 1.5rem;
+        width: 40px;
+        text-align: center;
+    }
+
+    .resource-info h5 {
+        color: #1f2937;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+    }
+
+    .resource-info p {
+        color: #6b7280;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .banner-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            margin-bottom: 2rem;
+        }
+
+        .floating-elements {
+            display: none;
+        }
+
+        .user-nist-section {
+            padding: 3rem 0;
+        }
+    }
+</style>
+
+<script>
+    const detailsContent = {
+        training: {
+            title: "Personnel Training in Cybersecurity",
+            content: `
+                <h5>Why Training Matters</h5>
+                <p>Cybersecurity training is essential for protecting critical infrastructure. Well-trained personnel serve as the first line of defense against cyber threats.</p>
+                
+                <h5>Key Training Areas</h5>
+                <ul>
+                    <li>Threat Recognition and Response</li>
+                    <li>Security Best Practices</li>
+                    <li>Incident Handling Procedures</li>
+                    <li>Risk Assessment Techniques</li>
+                </ul>
+                
+                <h5>Benefits</h5>
+                <p>Organizations with comprehensive training programs see up to 70% reduction in successful cyber attacks and improved overall security posture.</p>
+            `
+        },
+        defense: {
+            title: "Cyber Defense Strategies",
+            content: `
+                <h5>Defense Framework</h5>
+                <p>A systematic approach to defending against cyber attacks involves multiple stages and coordinated response efforts.</p>
+                
+                <h5>Defense Stages</h5>
+                <ul>
+                    <li>Prevention and Preparation</li>
+                    <li>Detection and Analysis</li>
+                    <li>Containment and Eradication</li>
+                    <li>Recovery and Post-Incident Analysis</li>
+                </ul>
+                
+                <h5>Implementation</h5>
+                <p>Effective defense requires combining technology solutions with skilled personnel and well-defined processes.</p>
+            `
+        },
+        malware: {
+            title: "Malware Risk Reduction",
+            content: `
+                <h5>Detection Methods</h5>
+                <p>Modern malware detection employs both signature-based and anomaly-based approaches for comprehensive protection.</p>
+                
+                <h5>Prevention Strategies</h5>
+                <ul>
+                    <li>Regular System Updates</li>
+                    <li>Endpoint Protection</li>
+                    <li>Network Monitoring</li>
+                    <li>User Education</li>
+                </ul>
+                
+                <h5>Advanced Protection</h5>
+                <p>AI-powered detection systems and behavioral analysis provide enhanced protection against zero-day threats and advanced persistent threats.</p>
+            `
+        }
+    };
+
+    function showDetails(type) {
+        const modal = document.getElementById('detailsModal');
+        const title = document.getElementById('modalTitle');
+        const body = document.getElementById('modalBody');
+        
+        const details = detailsContent[type];
+        title.textContent = details.title;
+        body.innerHTML = details.content;
+        
+        modal.classList.add('show');
+    }
+
+    function closeModal() {
+        document.getElementById('detailsModal').classList.remove('show');
+    }
+
+    function showResourcesModal() {
+        document.getElementById('resourcesModal').classList.add('show');
+    }
+
+    function closeResourcesModal() {
+        document.getElementById('resourcesModal').classList.remove('show');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const detailsModal = document.getElementById('detailsModal');
+        const resourcesModal = document.getElementById('resourcesModal');
+        
+        if (event.target === detailsModal) {
+            detailsModal.classList.remove('show');
+        }
+        if (event.target === resourcesModal) {
+            resourcesModal.classList.remove('show');
+        }
+    }
+
+    // Add scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.service-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+</script>
+
+{%endblock%}

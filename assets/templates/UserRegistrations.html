@@ -1,0 +1,670 @@
+{%extends 'base.html'%}
+{%block contents%}
+
+<section class="register-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="min-height: calc(100vh - 200px); padding-top: 100px; padding-bottom: 50px;">
+            <div class="col-lg-8 col-md-10 col-sm-11">
+                <!-- Registration Card -->
+                <div class="register-card">
+                    <div class="register-header">
+                        <div class="register-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h2 class="register-title">Create Account</h2>
+                        <p class="register-subtitle">Join VulneraAi and secure your digital world</p>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form action="{%url 'UserRegisterActions'%}" method="POST" class="register-form" id="registerForm">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <!-- Personal Information Section -->
+                            <div class="col-12">
+                                <div class="form-section-header">
+                                    <i class="fas fa-user me-2"></i>
+                                    <span>Personal Information</span>
+                                </div>
+                            </div>
+
+                            <!-- User Name -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.name}}
+                                    <label for="id_name">
+                                        <i class="fas fa-user me-2"></i>Full Name
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.mobile}}
+                                    <label for="id_mobile">
+                                        <i class="fas fa-phone me-2"></i>Mobile Number
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-12 mb-4">
+                                <div class="form-floating">
+                                    {{form.email}}
+                                    <label for="id_email">
+                                        <i class="fas fa-envelope me-2"></i>Email Address
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Account Security Section -->
+                            <div class="col-12">
+                                <div class="form-section-header">
+                                    <i class="fas fa-lock me-2"></i>
+                                    <span>Account Security</span>
+                                </div>
+                            </div>
+
+                            <!-- Login ID -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.loginid}}
+                                    <label for="id_loginid">
+                                        <i class="fas fa-user-circle me-2"></i>Login ID
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.password}}
+                                    <label for="id_password">
+                                        <i class="fas fa-key me-2"></i>Password
+                                    </label>
+                                    <div class="input-border"></div>
+                                    <button type="button" class="password-toggle" id="passwordToggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Address Information Section -->
+                            <div class="col-12">
+                                <div class="form-section-header">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <span>Address Information</span>
+                                </div>
+                            </div>
+
+                            <!-- Locality -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.locality}}
+                                    <label for="id_locality">
+                                        <i class="fas fa-map-pin me-2"></i>Locality
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- City -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    {{form.city}}
+                                    <label for="id_city">
+                                        <i class="fas fa-city me-2"></i>City
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="col-md-8 mb-4">
+                                <div class="form-floating">
+                                    {{form.address}}
+                                    <label for="id_address">
+                                        <i class="fas fa-home me-2"></i>Street Address
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <!-- State -->
+                            <div class="col-md-4 mb-4">
+                                <div class="form-floating">
+                                    {{form.state}}
+                                    <label for="id_state">
+                                        <i class="fas fa-flag me-2"></i>State
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Status Field -->
+                        <div style="display: none;">
+                            {{form.status}}
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and <a href="#" class="privacy-link">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-actions mb-4">
+                            <button type="submit" class="btn btn-register" id="registerBtn">
+                                <span class="btn-text">
+                                    <i class="fas fa-user-plus me-2"></i>Create Account
+                                </span>
+                                <span class="btn-loader d-none">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Messages Display -->
+                        {% if messages %}
+                        <div class="messages-container">
+                            {% for message in messages %}
+                            <div class="alert alert-danger custom-alert" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </form>
+
+                    <!-- Login Link -->
+                    <div class="register-footer">
+                        <p class="login-link">
+                            Already have an account? 
+                            <a href="{% url 'UserLogin' %}" class="login-btn">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="floating-elements">
+                    <div class="floating-element element-1">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="floating-element element-2">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="floating-element element-3">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .register-section {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+        min-height: calc(100vh - 200px);
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
+        margin-top: 76px;
+    }
+
+    .register-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="100" fill="url(%23a)"/><circle cx="400" cy="700" r="200" fill="url(%23a)"/></svg>');
+        animation: backgroundFloat 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-30px) rotate(180deg); }
+    }
+
+    .register-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        z-index: 10;
+        animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .register-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .register-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        color: white;
+        font-size: 2rem;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .register-title {
+        color: #2d3748;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .register-subtitle {
+        color: #718096;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .form-section-header {
+        color: #667eea;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+        display: flex;
+        align-items: center;
+    }
+
+    .register-form {
+        position: relative;
+    }
+
+    .form-floating {
+        position: relative;
+    }
+
+    .register-form input,
+    .register-form select,
+    .register-form textarea {
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 2px solid rgba(0, 0, 0, 0.1) !important;
+        border-radius: 16px !important;
+        padding: 1.2rem 1rem 0.6rem !important;
+        font-size: 1rem !important;
+        transition: all 0.3s ease !important;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    .register-form input:focus,
+    .register-form select:focus,
+    .register-form textarea:focus {
+        background: white !important;
+        border-color: #667eea !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+        outline: none !important;
+    }
+
+    .form-floating label {
+        color: #718096;
+        font-weight: 500;
+        padding: 0.8rem 1rem;
+        z-index: 3;
+    }
+
+    .form-floating input:focus ~ label,
+    .form-floating input:not(:placeholder-shown) ~ label,
+    .form-floating select:focus ~ label,
+    .form-floating select:not([value=""]) ~ label,
+    .form-floating textarea:focus ~ label,
+    .form-floating textarea:not(:placeholder-shown) ~ label {
+        color: #667eea !important;
+        transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+    }
+
+    .input-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+        z-index: 1;
+    }
+
+    .register-form input:focus ~ .input-border,
+    .register-form select:focus ~ .input-border,
+    .register-form textarea:focus ~ .input-border {
+        width: 100%;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #718096;
+        cursor: pointer;
+        z-index: 4;
+        transition: color 0.3s ease;
+    }
+
+    .password-toggle:hover {
+        color: #667eea;
+    }
+
+    .form-check-input:checked {
+        background-color: #667eea;
+        border-color: #667eea;
+    }
+
+    .form-check-label {
+        color: #718096;
+        font-size: 0.9rem;
+    }
+
+    .terms-link,
+    .privacy-link {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .terms-link:hover,
+    .privacy-link:hover {
+        color: #764ba2;
+        text-decoration: underline;
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+
+    .btn-register {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 16px;
+        color: white;
+        padding: 1rem 3rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn-register::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-register:hover::before {
+        left: 100%;
+    }
+
+    .btn-register:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .messages-container {
+        margin-top: 1.5rem;
+    }
+
+    .custom-alert {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        color: #dc2626;
+        border-radius: 12px;
+        padding: 1rem;
+        font-weight: 500;
+        animation: slideInDown 0.5s ease-out;
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .register-footer {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .login-link {
+        color: #718096;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    .login-btn {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .login-btn:hover {
+        color: #764ba2;
+        text-decoration: underline;
+    }
+
+    .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .floating-element {
+        position: absolute;
+        color: rgba(102, 126, 234, 0.1);
+        font-size: 3rem;
+        animation: floatElement 15s ease-in-out infinite;
+    }
+
+    .element-1 {
+        top: 10%;
+        left: 20%;
+        animation-delay: 0s;
+    }
+
+    .element-2 {
+        bottom: 20%;
+        right: 15%;
+        animation-delay: -5s;
+    }
+
+    .element-3 {
+        top: 60%;
+        left: 10%;
+        animation-delay: -10s;
+    }
+
+    @keyframes floatElement {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-30px) rotate(90deg); }
+        50% { transform: translateY(0px) rotate(180deg); }
+        75% { transform: translateY(30px) rotate(270deg); }
+    }
+
+    /* Loading state */
+    .btn-register.loading .btn-text {
+        opacity: 0;
+    }
+
+    .btn-register.loading .btn-loader {
+        display: inline-block !important;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .register-card {
+            padding: 2rem 1.5rem;
+            margin: 1rem;
+        }
+        
+        .register-title {
+            font-size: 1.5rem;
+        }
+        
+        .floating-elements {
+            display: none;
+        }
+        
+        .form-section-header {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Password toggle functionality
+        const passwordToggle = document.getElementById('passwordToggle');
+        const passwordInput = document.querySelector('input[type="password"]');
+        
+        if (passwordToggle && passwordInput) {
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        // Form submission with loading state
+        const registerForm = document.getElementById('registerForm');
+        const registerBtn = document.getElementById('registerBtn');
+        
+        registerForm.addEventListener('submit', function() {
+            registerBtn.classList.add('loading');
+            registerBtn.disabled = true;
+        });
+
+        // Input focus effects
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
+
+        // Form validation
+        registerForm.addEventListener('submit', function(e) {
+            let isValid = true;
+            const requiredFields = this.querySelectorAll('input[required], select[required], textarea[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            // Check terms checkbox
+            const termsCheck = document.getElementById('termsCheck');
+            if (!termsCheck.checked) {
+                isValid = false;
+                termsCheck.classList.add('is-invalid');
+            } else {
+                termsCheck.classList.remove('is-invalid');
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+                registerBtn.classList.remove('loading');
+                registerBtn.disabled = false;
+                
+                // Show error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-danger custom-alert mt-3';
+                errorDiv.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i>Please fill in all required fields and accept the terms and conditions.';
+                
+                const existingError = document.querySelector('.form-actions .alert');
+                if (existingError) {
+                    existingError.remove();
+                }
+                
+                registerBtn.parentElement.appendChild(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+            }
+        });
+
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('is-invalid');
+                }
+            });
+        });
+    });
+</script>
+
+{%endblock%}

@@ -1,0 +1,555 @@
+{%extends 'base.html'%}
+{%block contents%}
+
+<section class="nist-services-section">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-header text-center">
+                    <div class="header-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h2 class="section-title">National Institute of Standards and Technology</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">
+                        Advanced cybersecurity frameworks and best practices for critical infrastructure protection
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Cards -->
+        <div class="row services-grid">
+            <!-- Personnel Training Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">Reason to Train Personnel</h5>
+                        <p class="card-description">
+                            As the critical infrastructure (CI) sectors continue to embrace developments in information technology (IT), 
+                            susceptibility to cyber assaults has been found to rise. CIs may be made more resistant to cyber assaults 
+                            by employing individuals who are knowledgeable about cyber threats.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Training Effectiveness</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover-overlay">
+                        <div class="hover-content">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>Enhanced Security Through Education</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyber Defense Actions Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">Actions of a Defending Organization during a Cyber Attack</h5>
+                        <p class="card-description">
+                            When it comes to protecting their networks, cyber defenders at a company go through a number of stages. 
+                            During the first step, a risk assessment will identify any potential weak spots and vulnerabilities 
+                            in the system architecture.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover-overlay">
+                        <div class="hover-content">
+                            <i class="fas fa-eye"></i>
+                            <p>Continuous Threat Detection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malware Risk Reduction Card -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="card-title">IT and OT Procedures to Reduce the Risk of Malware</h5>
+                        <p class="card-description">
+                            The identification and elimination of computer malware are two components of an effective defensive 
+                            approach. Detection may be performed using either a signature-based approach or an anomaly-based 
+                            approach for comprehensive protection.
+                        </p>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">Detection Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover-overlay">
+                        <div class="hover-content">
+                            <i class="fas fa-search"></i>
+                            <p>Advanced Malware Detection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Information Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="info-banner">
+                    <div class="banner-content">
+                        <div class="banner-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="banner-text">
+                            <h4>NIST Cybersecurity Framework</h4>
+                            <p>Our implementations are based on the comprehensive NIST Cybersecurity Framework, ensuring industry-standard protection for critical infrastructure.</p>
+                        </div>
+                        <div class="banner-action">
+                            <a href="#" class="btn-learn-more">
+                                <span>Learn More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="floating-bg-elements">
+        <div class="bg-element element-1">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <div class="bg-element element-2">
+            <i class="fas fa-server"></i>
+        </div>
+        <div class="bg-element element-3">
+            <i class="fas fa-lock"></i>
+        </div>
+    </div>
+</section>
+
+<style>
+    .nist-services-section {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+        padding: 6rem 0;
+        margin-top: 76px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nist-services-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23667eea" stop-opacity="0.05"/><stop offset="100%" stop-color="%23667eea" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="100" fill="url(%23a)"/><circle cx="400" cy="700" r="200" fill="url(%23a)"/></svg>');
+        animation: backgroundFloat 30s ease-in-out infinite;
+    }
+
+    @keyframes backgroundFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-50px) rotate(180deg); }
+    }
+
+    .section-header {
+        margin-bottom: 5rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    .header-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2rem;
+        color: white;
+        font-size: 2rem;
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .section-title {
+        color: #2d3748;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .title-underline {
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0 auto 1.5rem;
+        border-radius: 2px;
+    }
+
+    .section-subtitle {
+        color: #718096;
+        font-size: 1.2rem;
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .services-grid {
+        position: relative;
+        z-index: 10;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 24px;
+        padding: 2.5rem;
+        height: 100%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover .card-icon {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-title {
+        color: #2d3748;
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+
+    .card-description {
+        color: #718096;
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .card-stats {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #667eea;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+    }
+
+    .card-hover-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .service-card:hover .card-hover-overlay {
+        opacity: 1;
+    }
+
+    .hover-content {
+        text-align: center;
+        color: white;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .hover-content {
+        transform: translateY(0);
+    }
+
+    .hover-content i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .hover-content p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .info-banner {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        position: relative;
+        z-index: 10;
+    }
+
+    .banner-content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .banner-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .banner-text {
+        flex: 1;
+    }
+
+    .banner-text h4 {
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .banner-text p {
+        color: #718096;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .btn-learn-more {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .btn-learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+
+    .floating-bg-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .bg-element {
+        position: absolute;
+        color: rgba(102, 126, 234, 0.05);
+        font-size: 4rem;
+        animation: floatBgElement 20s ease-in-out infinite;
+    }
+
+    .element-1 {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .element-2 {
+        bottom: 25%;
+        right: 15%;
+        animation-delay: -7s;
+    }
+
+    .element-3 {
+        top: 50%;
+        left: 85%;
+        animation-delay: -14s;
+    }
+
+    @keyframes floatBgElement {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-40px) rotate(90deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+        75% { transform: translateY(-60px) rotate(270deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .service-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .banner-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .floating-bg-elements {
+            display: none;
+        }
+
+        .nist-services-section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add smooth scroll behavior for learn more button
+        const learnMoreBtn = document.querySelector('.btn-learn-more');
+        if (learnMoreBtn) {
+            learnMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Add your navigation logic here
+                console.log('Learn more clicked');
+            });
+        }
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Add hover sound effect (optional)
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.setProperty('--hover-scale', '1.02');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.setProperty('--hover-scale', '1');
+            });
+        });
+    });
+</script>
+
+{%endblock%}
